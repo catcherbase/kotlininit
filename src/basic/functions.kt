@@ -55,9 +55,25 @@ fun sum(vararg ints: Int): Int {
  * 再帰呼び出し
  */
 fun sumSaiki(nums: List<Long>): Long =
-        if (nums.isEmpty()) 0
-        // list.dro(n)
-        // リストの先頭からn個の要素を除いた部分リスト
-        else nums.first() + sumSaiki(nums.drop(1))
+    if (nums.isEmpty()) 0
+    // list.dro(n)
+    // リストの先頭からn個の要素を除いた部分リスト
+    else nums.first() + sumSaiki(nums.drop(1))
+
+/**
+ * 再帰呼び出し（TCO）
+ */
+tailrec fun sumSaikiSNonStackOverflow(nums: List<Long>, accumulator: Long = 0): Long =
+    if (nums.isEmpty()) accumulator
+    else sumSaikiSNonStackOverflow(nums.drop(1), accumulator + nums.first())
 
 
+/**
+ * ローカル関数（go()）
+ */
+fun sumLocalFunction(numbers : List<Long>): Long {
+    tailrec fun go(nums: List<Long>, accumulator: Long = 0): Long =
+        if (nums.isEmpty()) accumulator
+        else go(nums.drop(1), accumulator + nums.first())
+    return go(numbers, 0)
+}
