@@ -77,3 +77,19 @@ fun sumLocalFunction(numbers : List<Long>): Long {
         else go(nums.drop(1), accumulator + nums.first())
     return go(numbers, 0)
 }
+
+/**
+ * 結果を返さない関数
+ * 実際にはUnit型の結果を返している
+ * Unit型の返却の際にはreturnを省略可能（普通は省略する）
+ */
+class Counter {
+    private var cnt = 0;
+
+    fun countUp(): Unit {
+        cnt++
+    }
+    fun getCount() :Int = cnt
+}
+
+
