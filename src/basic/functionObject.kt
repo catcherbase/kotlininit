@@ -17,6 +17,7 @@ fun main(args: Array<String>) {
 /**
  * 高階関数
  * 関数を引数にしたり、返り値として返すような関数
+ * 一般に呼び出しコスト高め
  */
 fun first(str: String, predicate: (Char) -> Boolean): Int {
     tailrec fun go(str: String, index: Int): Int =
